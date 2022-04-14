@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ItemList from './ItemList';
+import { traerProductos } from '../utils/products';
 import s from './ItemListContainer.module.css'
-import { traerProductos } from './utils/products';
 
 export default function ItemListContainer() {
 

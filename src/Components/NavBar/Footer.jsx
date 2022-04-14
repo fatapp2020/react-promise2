@@ -5,7 +5,8 @@ export default function Footer() {
 
     return (
         <>
-            <footer className="font-small blue pt-4 bg-dark">
+            <footer className="fixed-bottom font-small blue pt-4 bg-dark">
+            {/* <footer className="font-small blue pt-4 bg-dark"> */}
                 <div className="container-fluid text-center text-md-left text-white">
                     <div className="row">
                         <div className="col-md-6 mt-md-0 mt-3">

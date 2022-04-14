@@ -1,24 +1,45 @@
 import React, { useEffect, useState } from 'react'
-import { traerProducto } from '../utils/products'
+import { useParams } from 'react-router-dom'
+import { traerProductos } from '../utils/products'
 import ItemDetail from './ItemDetail'
 
 export default function ItemDetailContainer() {
 
+    const { id } = useParams();
+
     const [producto, setProducto] = useState({})
 
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
-      
-        traerProducto()
-            .then((res)=> {
-                setProducto(res);
+
+        traerProductos()
+            .then((res) => {
+                setProducto(res.filter(producto => producto.id === id))
             })
-      
-    }, [])
-    
-    // console.log(producto);
+            .catch((error) => console.log(error))
+            .finally(() => {
+                setLoading(false)
+            })
+
+    }, [id]);
+
     return (
-    <>        
-        <ItemDetail producto = {producto}/>        
-    </>
-  )
+        <>
+            {
+                loading ? (
+                    <h1 className='text-center my-5'>Cargando Productos, espere por favor </h1>
+                ) : (
+                    producto.map((item) => {
+                        return <ItemDetail
+                            key={item.id}
+                            title={item.title}
+                            pictureUrl={item.pictureUrl}
+                            description={item.description}
+                            price={item.price} />
+                    })
+                )
+            }
+        </>
+    )
 }

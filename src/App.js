@@ -1,19 +1,37 @@
 import './App.css';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import NavBar from './Components/NavBar/NavBar';
-import ItemDetailContainer from './Components/DetailComponent/ItemDetailContainer';
-import ItemListContainer from './Components/ItemListContainer';
 import Footer from './Components/NavBar/Footer';
+import ItemListContainer from './Components/ListComponent/ItemListContainer';
+import ItemDetailContainer from './Components/DetailComponent/ItemDetailContainer';
+import ListadoContainer from './Components/Listado/ListadoContainer';
+
+import PruebaOnClick from './Components/Click/PruebaOnClick';
 
 
-function App() {
+export default function App() {
+
   return (
     <>
-      <NavBar />
-      <ItemListContainer />
-      <ItemDetailContainer />
-      <Footer />
+      <BrowserRouter>
+
+        <NavBar />
+
+        <Routes>
+          <Route exact path='/' element={<ItemListContainer />} />
+          <Route exact path='/detalle' element={<ItemDetailContainer />} />
+          <Route exact path='/item/:id' element={<ItemDetailContainer />} />
+
+          <Route exact path='/test' element={<PruebaOnClick />} />
+          <Route exact path='/listado' element={<ListadoContainer />} />
+          <Route path='*' element={<ItemListContainer />} />
+        </Routes>
+
+        <Footer />
+
+      </BrowserRouter>
     </>
   );
 }
-
-export default App;

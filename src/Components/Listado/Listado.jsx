@@ -1,9 +1,14 @@
 import React from 'react'
 import Item from './Item'
 
-export default function ItemList({ productos }) {
+export default function Listado({ productos }) {
+
+    console.log(productos);
 
     return (
+        // <>
+        //     {JSON.stringify(productos)}
+        // </>
 
         productos.map(producto =>
             <Item
