@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { traerProductos } from '../utils/products';
 import Listado from './Listado';
+import s from './ItemListado.module.css'
 
 export default function ListadoContainer() {
 
 
     const [productos, setProductos] = useState([]);
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 
@@ -13,14 +16,27 @@ export default function ListadoContainer() {
             .then((res) => {
                 setProductos(res);
             })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                setLoading(false)
+            })
 
     }, [])
 
     return (
         <>
-            <h2>Listado Container</h2>
+            {
+                loading ? (
+                    <h1 className='text-center my-5'>Cargando Productos, espere por favor </h1>
+                ) : (
+                    <div className={s.containerI}>
            
-            <Listado productos={productos} />
+            <Listado productos={productos} /> </div>
+                )
+            }
+
         </>
     )
 }

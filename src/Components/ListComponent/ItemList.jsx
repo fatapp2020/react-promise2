@@ -10,6 +10,7 @@ export default function ItemList({ productos }) {
                 key={producto.id}
                 title={producto.title}                
                 price={producto.price}
+                category={producto.category}
                 pictureUrl={producto.pictureUrl} />
         )
     )

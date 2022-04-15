@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
 
@@ -9,12 +9,20 @@ export default function NavBar() {
         <>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand><Link to="/">Navbar</Link></Navbar.Brand>
+                    <Navbar.Brand><Link to="/">Inicio</Link></Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#lorem">lorem</Nav.Link>
-                        <Nav.Link href="#lorem1">lorem</Nav.Link>
-                        <Cart/>
+                        <NavDropdown title="Categorías" id="nav-dropdown">
+                            <NavDropdown.Item as={Link} to="/category/camisas">Camisas</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/category/pantalones">Pantalones</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/category/remeras">Remeras</NavDropdown.Item>
+                        </NavDropdown>
+                        <NavDropdown title="Items" id="nav-dropdown">
+                            <NavDropdown.Item as={Link} to="/item/1">1</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/item/2">2</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/item/3">3</NavDropdown.Item>
+                        </NavDropdown>
+                        <Nav.Link as={Link} to="/test">Test</Nav.Link>
+                        <Cart />
                     </Nav>
                 </Container>
             </Navbar>

@@ -2,6 +2,8 @@ import './App.css';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import ContextProvider from './Context/ContextProvider';
+
 import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/NavBar/Footer';
 import ItemListContainer from './Components/ListComponent/ItemListContainer';
@@ -9,29 +11,31 @@ import ItemDetailContainer from './Components/DetailComponent/ItemDetailContaine
 import ListadoContainer from './Components/Listado/ListadoContainer';
 
 import PruebaOnClick from './Components/Click/PruebaOnClick';
+import Test from './Components/Test/Test';
 
 
 export default function App() {
 
   return (
     <>
-      <BrowserRouter>
 
-        <NavBar />
+      <ContextProvider>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route exact path='/' element={<ListadoContainer />} />
+            <Route exact path='/category/:categoryId' element={<ItemListContainer />} />
+            <Route exact path='/item/:id' element={<ItemDetailContainer />} />
 
-        <Routes>
-          <Route exact path='/' element={<ItemListContainer />} />
-          <Route exact path='/detalle' element={<ItemDetailContainer />} />
-          <Route exact path='/item/:id' element={<ItemDetailContainer />} />
+            <Route exact path='/prueba' element={<PruebaOnClick />} />
+            <Route exact path='/test' element={<Test />} />
+            <Route path='*' element={<ItemListContainer />} />
+          </Routes>
 
-          <Route exact path='/test' element={<PruebaOnClick />} />
-          <Route exact path='/listado' element={<ListadoContainer />} />
-          <Route path='*' element={<ItemListContainer />} />
-        </Routes>
+          <Footer />
+        </BrowserRouter>
+      </ContextProvider>
 
-        <Footer />
-
-      </BrowserRouter>
     </>
   );
 }

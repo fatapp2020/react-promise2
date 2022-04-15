@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap'
 
-export default function Item({ id, title, price, pictureUrl }) {
+export default function Item({ id, title, price, category, pictureUrl }) {
 
     return (
         <>            
@@ -12,6 +12,7 @@ export default function Item({ id, title, price, pictureUrl }) {
                     <Button variant="secondary" className="my-2">Ver detalle del producto</Button>
                 </Card.Body>
                 <Card.Footer className="text-center">
+                    <Card.Text className='fs-5'>Categoría: {category} </Card.Text>
                     <Card.Text className='fs-5'>Precio: $ {price}.- </Card.Text>
                 </Card.Footer>
             </Card>
