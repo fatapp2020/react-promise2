@@ -28,7 +28,7 @@ export default function ItemDetailContainer() {
         <>
             {
                 loading ? (
-                    <h1 className='text-center my-5'>Cargando Productos, espere por favor </h1>
+                    <h1 className='text-center font-bold my-5'>Cargando Productos, espere por favor </h1>
                 ) : (
                     producto.map((item) => {
                         return <ItemDetail
@@ -36,7 +36,9 @@ export default function ItemDetailContainer() {
                             title={item.title}
                             pictureUrl={item.pictureUrl}
                             description={item.description}
-                            price={item.price} />
+                            price={item.price}
+                            stock={item.stock}
+                        />
                     })
                 )
             }

@@ -10,21 +10,23 @@ export default function ItemListContainer() {
 
     const [loading, setLoading] = useState(true);
 
-    const { categoryId } = useParams();
-
-    console.log('Esta es la categoría', categoryId);
+    const { categoryId } = useParams();    
 
     useEffect(() => {
 
         traerProductos()
             .then((res) => {
-                setProductos(res.filter(productos => productos.category === categoryId));
+                categoryId ? (
+                    setProductos(res.filter(productos => productos.category === categoryId))                    
+                ): (
+                    setProductos(res)
+                );
             })
             .catch((err) => {
                 console.log(err);
             })
             .finally(() => {
-                setLoading(false)
+                setLoading(false);
             })
 
     }, [categoryId])
@@ -33,7 +35,7 @@ export default function ItemListContainer() {
         <>
             {
                 loading ? (
-                    <h1 className='text-center my-5'>Cargando Productos, espere por favor </h1>
+                    <h1 className='text-center font-bold fs-1 my-5'>Cargando Productos, espere por favor... </h1>
                 ) : (
                     <div className={s.containerI}>
                         <ItemList productos={productos} />

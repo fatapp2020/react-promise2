@@ -8,7 +8,7 @@ import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/NavBar/Footer';
 import ItemListContainer from './Components/ListComponent/ItemListContainer';
 import ItemDetailContainer from './Components/DetailComponent/ItemDetailContainer';
-import ListadoContainer from './Components/Listado/ListadoContainer';
+
 
 import PruebaOnClick from './Components/Click/PruebaOnClick';
 import Test from './Components/Test/Test';
@@ -23,7 +23,7 @@ export default function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route exact path='/' element={<ListadoContainer />} />
+            <Route exact path='/' element={<ItemListContainer />} />
             <Route exact path='/category/:categoryId' element={<ItemListContainer />} />
             <Route exact path='/item/:id' element={<ItemDetailContainer />} />
 
