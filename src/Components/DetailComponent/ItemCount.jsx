@@ -29,8 +29,7 @@ export default function ItemCount({ initial, stock, onAdd }) {
                     <Col><div className="text-center fs-1 fw-bold">{counter}</div></Col>
                     <Col><div className="d-grid gap-2"> <Button onClick={() => Incremento()} variant="danger" size="sm">+</Button></div></Col>
                 </Row>
-                <Row>
-                    {/* <Col><div className="d-grid gap-2"> <Button size="sm" onClick={() => Reset()} variant="warning">Reset</Button></div></Col> */}
+                <Row>                    
                     <Col><div className="d-grid gap-2"> <Button size="sm" onClick={() => onAdd(counter)} variant="success">Agregar al Carrito</Button></div></Col>
                 </Row>
             </Container>

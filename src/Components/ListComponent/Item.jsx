@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 export default function Item({ id, title, price, category, pictureUrl }) {
 
-    console.log(id);
     return (
         <>            
             <Card style={{ width: '18rem' }} className="mx-3 mb-4">

@@ -8,6 +8,7 @@ export default function ItemDetail({ title, pictureUrl, description, price, stoc
 
   function onAdd(cuanto) {
     setNumber(cuanto);
+    alert(cuanto);
   }
 
   return (
