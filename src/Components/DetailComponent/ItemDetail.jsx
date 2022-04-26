@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
+import { CartContext } from '../CartContext'
 import ItemCount from './ItemCount'
+import { Link } from 'react-router-dom'
 
-export default function ItemDetail({ title, pictureUrl, description, price, stock }) {
+export default function ItemDetail({ title, id, pictureUrl, description, price, category, stock }) {
 
   const [number, setNumber] = useState(0)
 
-  function onAdd(cuanto) {
-    setNumber(cuanto);
-    alert(cuanto);
+  const { addToCart } = useContext( CartContext )   
+
+  function onAdd(count) {
+    setNumber(count);
+    addToCart({ title, id, pictureUrl, description, price, stock, category, count });    
   }
 
   return (
@@ -25,7 +29,7 @@ export default function ItemDetail({ title, pictureUrl, description, price, stoc
             <ItemCount onAdd={onAdd} initial={1} stock={stock} />
           ) :
             (
-              <Button variant="secondary">Ver detalle del producto</Button>
+              <Button as={Link} to={`/cart`}  variant="secondary">Ir al carrito</Button>
             )}
         </Card.Footer>
       </Card>

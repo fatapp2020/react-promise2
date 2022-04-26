@@ -33,11 +33,13 @@ export default function ItemDetailContainer() {
                     producto.map((item) => {
                         return <ItemDetail
                             key={item.id}
+                            id={item.id}
                             title={item.title}
                             pictureUrl={item.pictureUrl}
                             description={item.description}
                             price={item.price}
                             stock={item.stock}
+                            category={item.category}
                         />
                     })
                 )

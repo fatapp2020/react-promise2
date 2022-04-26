@@ -6,6 +6,7 @@ export default function PruebaOnClick() {
     function handleOnClick(evt) {
 
         evt.stopPropagation();
+        
         alert('handleOnClick')
 
         //   console.log(evt);

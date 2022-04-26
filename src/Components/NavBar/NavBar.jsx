@@ -21,7 +21,7 @@ export default function NavBar() {
                             <NavDropdown.Item as={Link} to="/item/2">2</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/item/3">3</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link as={Link} to="/test">Test</Nav.Link>
+                        {/* <Nav.Link as={Link} to="/test">Test</Nav.Link> */}
                         <Cart />
                     </Nav>
                 </Container>
